@@ -1,0 +1,182 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light Theme Variables */
+  --light-bg-color: #f0f0f0;
+  --light-text-color: #333;
+  --light-board-color: #f0f0f0;
+  --light-button-bg-color: #4caf50;
+  --light-button-text-color: white;
+  --light-button-hover-bg-color: #388e3c;
+  --light-shadow-color: #bebebe;
+  --light-highlight-color: rgba(0, 255, 0, 0.3);
+  --light-x-color: #e91e63;
+  --light-o-color: #2196f3;
+  --light-white-shadow-color: #ffffff;
+
+  /* Dark Theme Variables */
+  --dark-bg-color: #282c34;
+  --dark-text-color: #fff;
+  --dark-board-color: #363b46;
+  --dark-button-bg-color: #1a73e8;
+  --dark-button-text-color: #fff;
+  --dark-button-hover-bg-color: #1565c0;
+  --dark-shadow-color: #1c1e24;
+  --dark-highlight-color: rgba(0, 255, 0, 0.5);
+  --dark-x-color: #ff4081;
+  --dark-o-color: #42a5f5;
+  --dark-white-shadow-color: #444857;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  background-color: var(--board-color);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px var(--shadow-color), -10px -10px 30px var(--white-shadow-color);
+  text-align: center;
+  position: relative; /* For absolute positioning of the toggle button */
+}
+
+h1 {
+  color: var(--text-color);
+}
+
+.mode-selection {
+  margin-bottom: 20px;
+}
+
+.mode-selection label {
+  margin: 0 10px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.turn-display {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: var(--board-color);
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px var(--shadow-color), -5px -5px 15px var(--white-shadow-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+}
+
+.cell.x {
+  color: var(--x-color);
+}
+
+.cell.o {
+  color: var(--o-color);
+}
+
+.new-game-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.new-game-button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.result-message {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+
+.winning-line {
+  background-color: var(--highlight-color);
+}
+
+/* Theme Toggle Button Styles */
+#theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.sun-icon, .moon-icon {
+    display: none;
+}
+
+body.dark-mode .moon-icon {
+    display: inline-block;
+}
+
+body:not(.dark-mode) .sun-icon {
+    display: inline-block;
+}
+
+body.dark-mode {
+  --bg-color: var(--dark-bg-color);
+  --text-color: var(--dark-text-color);
+  --board-color: var(--dark-board-color);
+  --button-bg-color: var(--dark-button-bg-color);
+  --button-text-color: var(--dark-button-text-color);
+  --button-hover-bg-color: var(--dark-button-hover-bg-color);
+  --shadow-color: var(--dark-shadow-color);
+  --highlight-color: var(--dark-highlight-color);
+  --x-color: var(--dark-x-color);
+  --o-color: var(--dark-o-color);
+  --white-shadow-color: var(--dark-white-shadow-color);
+}
+
+body:not(.dark-mode) {
+  --bg-color: var(--light-bg-color);
+  --text-color: var(--light-text-color);
+  --board-color: var(--light-board-color);
+  --button-bg-color: var(--light-button-bg-color);
+  --button-text-color: var(--light-button-text-color);
+  --button-hover-bg-color: var(--light-button-hover-bg-color);
+  --shadow-color: var(--light-shadow-color);
+  --highlight-color: var(--light-highlight-color);
+  --x-color: var(--light-x-color);
+  --o-color: var(--light-o-color);
+  --white-shadow-color: var(--light-white-shadow-color);
+}
